@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>I8Beef.CodeAnalysis.RuleSet</id>
+        <version>1.0.0</version>
+        <authors>Michael Hallock</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <developmentDependency>true</developmentDependency>
+        <description>Code Analysis rulset for I8Beef's project standards</description>
+        <dependencies>
+            <dependency id="StyleCop.Analyzers" version="1.0.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="content\CustomDictionary.xml" target="content\CustomDictionary.xml" />
+        <file src="content\I8Beef.CodeAnalysis.RuleSet.ruleset" target="content\I8Beef.CodeAnalysis.RuleSet.ruleset" />
+        <file src="content\stylecop.json" target="content\stylecop.json" />
+        <file src="tools\install.ps1" target="tools\install.ps1" />
+        <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />
+    </files>
+</package>
