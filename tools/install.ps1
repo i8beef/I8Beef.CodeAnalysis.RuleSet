@@ -15,7 +15,10 @@ $projectRootElement = [Microsoft.Build.Construction.ProjectRootElement]::Open($p
 ## Set 'Build Action' to 'CodeAnalysisDictionary' on custom dictionary
 Write-Host "Configuring build action on CustomDictionary.xml"
 $item = $project.ProjectItems.Item("CustomDictionary.xml")
-$item.Properties.Item("BuildAction").Value = [int]4
+$item.Properties.Item("BuildAction").Value = "CodeAnalysisDictionary"
+
+$item = $project.ProjectItems.Item("stylecop.json")
+$item.Properties.Item("BuildAction").Value = "AdditionalFiles"
 
 ## Enable code analysis on build and add ruleset
 # This is what we want to add to the project
