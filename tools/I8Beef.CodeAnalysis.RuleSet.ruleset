@@ -420,6 +420,7 @@
     <Rule Id="SA1101" Action="None" />
     <Rule Id="SA1123" Action="None" />
     <Rule Id="SA1124" Action="None" />
+    <Rule Id="SA1202" Action="None" />
     <Rule Id="SA1309" Action="None" />
     <Rule Id="SA1501" Action="None" />
     <Rule Id="SA1502" Action="None" />
