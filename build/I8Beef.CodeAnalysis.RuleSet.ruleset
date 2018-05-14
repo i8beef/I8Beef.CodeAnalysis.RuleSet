@@ -442,4 +442,7 @@
     <Rule Id="SA1641" Action="None" />
     <Rule Id="SX1101" Action="Warning" />
   </Rules>
+  <Rules AnalyzerId="AsyncUsageAnalyzers" RuleNamespace="AsyncUsageAnalyzers">
+    <Rule Id="UseConfigureAwait" Action="Info" />
+  </Rules>
 </RuleSet>
