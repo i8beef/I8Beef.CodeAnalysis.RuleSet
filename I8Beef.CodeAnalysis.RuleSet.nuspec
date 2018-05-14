@@ -9,7 +9,6 @@
         <description>Code Analysis rulset for I8Beef's project standards</description>
         <dependencies>
             <dependency id="StyleCop.Analyzers" version="1.0.1" />
-            <dependency id="AsyncUsageAnalyzers" version="1.0.0-alpha003" />
         </dependencies>
     </metadata>
     <files>
