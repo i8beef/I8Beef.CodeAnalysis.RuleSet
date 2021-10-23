@@ -50,7 +50,7 @@ jobs:
           path: ${{ env.PACKOUTPUTPATH }}
 
       - name: MyGet push
-        run: dotnet nuget push "${{ env.PACKOUTPUTPATH }}/*.nupkg" --source https://www.myget.org/F/i8beef/api/v3/index.json --api-key ${{ secrets.MYGET_TOKEN }} --skip-duplicate --no-symbols 
+        run: dotnet nuget push "${{ env.PACKOUTPUTPATH }}/*.nupkg" --source https://www.myget.org/F/i8beef/api/v3/index.json --api-key ${{ secrets.MYGET_TOKEN }} --skip-duplicate --no-symbols true
 
       - name: GitHub NuGet push
-        run: dotnet nuget push "${{ env.PACKOUTPUTPATH }}/*.nupkg" --source https://nuget.pkg.github.com/i8beef/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate --no-symbols 
+        run: dotnet nuget push "${{ env.PACKOUTPUTPATH }}/*.nupkg" --source https://nuget.pkg.github.com/i8beef/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate --no-symbols true
