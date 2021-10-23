@@ -1,0 +1,56 @@
+name: release
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+.[0-9]+"
+
+env:
+  DOTNETVERSION: "5.0.x"
+  APP: "I8Beef.CodeAnalysis.RuleSet"
+  CSPROJ: "I8Beef.CodeAnalysis.RuleSet.csproj"
+  PACKOUTPUTPATH: "./out"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Setup .NET Core SDK ${{ env.DOTNETVERSION }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ env.DOTNETVERSION }}
+
+      - name: Get version
+        id: version
+        uses: battila7/get-version-action@v2
+
+      - name: Get previous release tag
+        id: previousTag
+        uses: sammcoe/get-previous-release-action@v1.0.3
+
+      - name: Build changelog
+        id: gitLog
+        uses: jarrodparkes/git-log-action@1.0.0
+        with:
+          start: ${{ steps.previousTag.outputs.tag }}
+          end: ${{ github.ref }}
+
+      - name: Build
+        run: dotnet pack ${{ env.CSPROJ }} -p:PackageVersion:={{ steps.version.outputs.version-without-v }} -o ${{ env.PACKOUTPUTPATH }}
+
+      - name: Upload NuGet build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.APP }} NuGet Packages
+          path: ${{ env.PACKOUTPUTPATH }}
+
+      - name: MyGet push
+        run: dotnet nuget push "./${{ env.PACKOUTPUTPATH }}/*.nupkg" --skip-duplicate --no-symbols --source -s https://www.myget.org/F/i8beef/api/v3/index.json --api-key ${{ secrets.MYGET_TOKEN }}
+
+      - name: GitHub NuGet push
+        run: dotnet nuget push "./${{ env.PACKOUTPUTPATH }}/*.nupkg" --skip-duplicate --no-symbols --source https://nuget.pkg.github.com/i8beef/index.json --api-key ${{ secrets.GITHUB_TOKEN }}

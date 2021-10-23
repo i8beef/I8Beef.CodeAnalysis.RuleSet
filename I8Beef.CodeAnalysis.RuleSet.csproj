@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <PackageVersion>1.0.0</PackageVersion>
+        <PackageId>I8Beef.CodeAnalysis.RuleSet</PackageId>
+        <Title>I8Beef.CodeAnalysis.RuleSet</Title>
+        <Authors>Michael Hallock</Authors>
+        <Description>Code Analysis rulset for I8Beef's project standards</Description>
+        <PackageTags></PackageTags>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <RepositoryUrl></RepositoryUrl>
+        <PackageProjectUrl>https://github.com/i8beef/I8Beef.CodeAnalysis.RuleSet</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <DevelopmentDependency>true</DevelopmentDependency>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="build/I8Beef.CodeAnalysis.RuleSet.ruleset">
+            <PackagePath>build/</PackagePath>
+            <Pack>true</Pack>
+        </Content>
+        <Content Include="build/I8Beef.CodeAnalysis.RuleSet.targets">
+            <PackagePath>build/</PackagePath>
+            <Pack>true</Pack>
+        </Content>
+        <Content Include="build/stylecop.json">
+            <PackagePath>build/</PackagePath>
+            <Pack>true</Pack>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+    </ItemGroup>
+
+</Project>
