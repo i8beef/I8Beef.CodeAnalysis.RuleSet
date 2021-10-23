@@ -41,7 +41,7 @@ jobs:
           end: ${{ github.ref }}
 
       - name: Build
-        run: dotnet pack ${{ env.CSPROJ }} -p:PackageVersion:={{ steps.version.outputs.version-without-v }} -o ${{ env.PACKOUTPUTPATH }}
+        run: dotnet pack ${{ env.CSPROJ }} -p:PackageVersion={{ steps.version.outputs.version-without-v }} -o ${{ env.PACKOUTPUTPATH }}
 
       - name: Upload NuGet build artifact
         uses: actions/upload-artifact@v2
